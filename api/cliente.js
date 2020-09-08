@@ -8,7 +8,7 @@ const listarClientes = () => {
         .catch(error => error)
 };
 
-const casdastrarCliente = (nome, cpf) => {
+const cadastrarCliente = (nome, cpf) => {
     const body = JSON.stringify({ nome, cpf });
 
     return fetch(baseUrl + '/cliente', {
@@ -19,6 +19,13 @@ const casdastrarCliente = (nome, cpf) => {
         body,
     })
         .then(response => response.json())
+        .then(data => data)
+        .catch(error => error);
+};
+
+const deletaCliente = id => {
+    return fetch(baseUrl + '/cliente/' + id)
+        .then(response => response.json)
         .then(data => data)
         .catch(error => error);
 };
